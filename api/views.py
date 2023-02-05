@@ -1,3 +1,5 @@
+from django.shortcuts import render
+
 from django.http import JsonResponse
 from .models import Registrant
 from .serializers import RegistrantSerializer
@@ -20,4 +22,5 @@ def registrant_list(request):
     # so we are just telling the JesonResponse just send it as a json i know what i am doing, it's intentional 
 
     return JsonResponse({'registrants':serializer.data}) 
+
 
