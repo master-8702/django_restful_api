@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings  ## to view uploaded files in local environment
 from django.conf.urls.static import static  ## to view uploaded files in local environment
+from registrationSystem import views   ## to access the views in the url pattern
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('registrants/', view=views.registrant_list ),
 ]
 
 ## to view uploaded files in local environment
