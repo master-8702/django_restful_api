@@ -1,11 +1,11 @@
-from django.shortcuts import render
-
+import json
 from django.http import JsonResponse
 from .models import Registrant
 from .serializers import RegistrantSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+
 
 # in this python file we will just have a bunch of methods that will accept http request and return to the request accordingly
 
@@ -23,4 +23,13 @@ def registrant_list(request):
 
     return JsonResponse({'registrants':serializer.data}) 
 
+
+
+@api_view(['GET'])      # to limit the function on what type of requests can it handle
+def registrant_detail(request, pk):
+    ## here we will geta single registrants and serialize it and return it as a json file
+    registrant = Registrant.objects.get(id=pk)
+    serializer = RegistrantSerializer(registrant, many = False) 
+
+    return JsonResponse({'registrant':serializer.data}) 
 
