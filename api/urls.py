@@ -5,7 +5,8 @@ urlpatterns = [
     path('registrants/', views.registrant_list ),
     path('registrant_detail/<str:pk>/', views.registrant_detail),
     path('registrant_create/', views.register_registrant ),
-   
+    path('registrant_update/<str:pk>/', views.registrant_update),
+  
 
 
 ]

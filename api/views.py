@@ -55,3 +55,23 @@ def register_registrant(request):
 
 
 
+
+api_view(['PUT'])
+def registrant_update(request, pk):
+    # here we will update the registrant that already exists in the system and return HTTP status code 202 to tell the update 
+    # operation is successfull
+    # but before doing that we need to check the incoming data is valid by using is_valid method from rest_framework on the data(serializer)
+    # then we will update the data by calling the save method on the data (serializer)
+   
+
+    # here first we will get that object(the one that needs update) first, because we don't want to create new object 
+    # we just wanna update the existing one
+    registrant = Registrant.objects.get(id=pk)
+    serializer = RegistrantSerializer(instance=registrant,data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+    
+        return Response(serializer.data, status = status.HTTP_202_ACCEPTED)
+    return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
+
