@@ -6,7 +6,7 @@ urlpatterns = [
     path('registrant_detail/<str:pk>/', views.registrant_detail),
     path('registrant_create/', views.register_registrant ),
     path('registrant_update/<str:pk>/', views.registrant_update),
-  
+    path('registrant_delete/<str:pk>/', views.registrant_delete),
 
 
 ]

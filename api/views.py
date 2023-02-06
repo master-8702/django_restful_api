@@ -75,3 +75,16 @@ def registrant_update(request, pk):
     return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 
 
+
+
+
+api_view(['DELETE'])
+def registrant_delete(request, pk):
+    # here we will delete the registrant that already exists in the system and return HTTP status code 200 to tell the delete 
+    # operation is successfull
+   
+    registrant = Registrant.objects.get(id=pk)
+    registrant.delete()
+    
+        
+    return Response( status = status.HTTP_204_NO_CONTENT)
