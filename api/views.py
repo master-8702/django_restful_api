@@ -3,7 +3,6 @@ from .serializers import RegistrantSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from django.views.decorators.csrf import csrf_exempt # import
 
 
 # in this python file we will just have a bunch of methods that will accept http request and return to the request accordingly
@@ -39,7 +38,7 @@ def registrant_detail(request, pk):
 
 
 
-api_view(['POST'])
+@api_view(['POST'])
 def register_registrant(request):
     # here we will register the enw registrant and return HTTP status code 201 to tell the create operation is successfull
     # but before doing that we need to check the incoming data is valid by using is_valid method from rest_framework on the data(serializer)
@@ -56,7 +55,7 @@ def register_registrant(request):
 
 
 
-api_view(['PUT'])
+@api_view(['PUT'])
 def registrant_update(request, pk):
     # here we will update the registrant that already exists in the system and return HTTP status code 202 to tell the update 
     # operation is successfull
@@ -78,7 +77,7 @@ def registrant_update(request, pk):
 
 
 
-api_view(['DELETE'])
+@api_view(['DELETE'])
 def registrant_delete(request, pk):
     # here we will delete the registrant that already exists in the system and return HTTP status code 200 to tell the delete 
     # operation is successfull
